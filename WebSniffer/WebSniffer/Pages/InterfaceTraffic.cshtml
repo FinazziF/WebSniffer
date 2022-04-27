@@ -1,0 +1,12 @@
+﻿@page "/InterfaceTraffic/{ip}"
+@model WebSniffer.Pages.InterfaceTrafficModel
+@{
+    ViewData["Title"] = "Selected Interface Traffic";
+}
+
+<h2>@Model.devicePorp[0]</h2>
+<h3>@Model.devicePorp[1]</h3>
+<br />
+<form method="post" asp-page-handler="Capture">
+    <button class="btn btn-primary">Start Capture</button>
+</form>

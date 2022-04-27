@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<a asp-page="Index" asp-page-handler="Interfaces" class="btn btn-primary">
+    Seeks interfaces
+</a>
+
+<br />
+<br />
+
+@if (Model.deviceList != null)
+{
+    <div style="height: 400px; overflow: auto">
+        <table style="height: 400px" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Ip Address</th>
+                    <th scope="col">Select Interface</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var device in Model.deviceList)
+                {
+                    <tr>
+                        <th scope="row">@device[0]</th>
+                        <td>@device[1]</td>
+                        <td>
+                            <form method="post" asp-page-handler="Redirect" asp-route-ipAdd="@device[1]">
+                                <button class="btn btn-primary">Select interface</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
