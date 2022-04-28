@@ -8,49 +8,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PacketDotNet;
 using SharpPcap;
+using SharpPcap.LibPcap;
 
 namespace WebSniffer.Pages
 {
     public class InterfaceTrafficModel : PageModel
     {
-        public ICaptureDevice device { get; set; }
+        public LibPcapLiveDevice device { get; set; }
         public string[] devicePorp { get; set; }
         public List<string> packets { get; set; }
         private bool capture { get; set; }
         [Parameter]
         public string ip { get; set; }
-
+        private int count { get; set; }
+        
         public void OnGet()
         {
-            capture = false;            
-            device = CaptureDeviceList.Instance.FirstOrDefault(x => parseDevice(x)[1] == ip);
-            if (device == null)
-                Redirect("/");
+            var device = CaptureDeviceList.Instance.First(x=>x.)
             devicePorp = parseDevice(device);
-            device.OnPacketArrival +=
-                new PacketArrivalEventHandler(OnPacketArrival);            
+            device.Open();
+            device.OnPacketArrival += Device_OnPacketArrival;
+            device.StartCapture();
         }
 
-        public void OnPostCapture()
-        {
-            if (capture == false)
-            {
-                capture = true;
-
-                device.Open();
-                device.Filter = "ip and tcp";
-                device.StartCapture();
-            }
-            else
-            {
-                capture = false;
-
-                device.StopCapture();
-                device.Close();
-            }
-        }
-
-        public void OnPacketArrival(object sender, PacketCapture e)
+        void Device_OnPacketArrival(object s, PacketCapture e)
         {
             var packet = Packet.ParsePacket(e.Device.LinkType, e.Data.ToArray());
             string tablePacket = packet.ToString().Replace("][", "]\n\n[");
@@ -70,9 +51,28 @@ namespace WebSniffer.Pages
                 try { tablePacket += Dns.GetHostEntry(ipv4.DestinationAddress).HostName; }
                 catch { tablePacket += ipv4.DestinationAddress; }
                 tablePacket += $" :{tcp.DestinationPort}";
-            }
+            }            
             packets.Add(tablePacket);
         }
+
+        public void OnPostCapture()
+        {
+            if (capture == false)
+            {
+                capture = true;
+
+                device.Open();
+                device.Filter = "ip and tcp";
+                device.StartCapture();
+            }
+            else
+            {
+                capture = false;
+
+                device.StopCapture();
+                device.Close();
+            }
+        }        
 
         private string[] parseDevice(ICaptureDevice dev)
         {

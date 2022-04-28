@@ -1,5 +1,6 @@
 ﻿@page "/InterfaceTraffic/{ip}"
 @model WebSniffer.Pages.InterfaceTrafficModel
+@using Syncfusion.Blazor.Grids
 @{
     ViewData["Title"] = "Selected Interface Traffic";
 }
@@ -10,3 +11,19 @@
 <form method="post" asp-page-handler="Capture">
     <button class="btn btn-primary">Start Capture</button>
 </form>
+
+<br />
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <SfGrid DataSource="@Model.packets" AllowPaging="true">
+                <GridPageSettings PageCount="5"></GridPageSettings>
+                <GridColumns>                    
+                    <GridColumn Field=@nameof(Model.packets) HeaderText="Packet" Width="150"></GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </div>
+</div>
+
