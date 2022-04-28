@@ -7613,23 +7613,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\finazzi.17122\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Fra\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
+      "projectUniqueName": "D:\\Progetti\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
       "projectName": "WebSniffer",
-      "projectPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
-      "packagesPath": "C:\\Users\\finazzi.17122\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\obj\\",
+      "projectPath": "D:\\Progetti\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
+      "packagesPath": "C:\\Users\\Fra\\.nuget\\packages\\",
+      "outputPath": "D:\\Progetti\\WebSniffer\\WebSniffer\\WebSniffer\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\finazzi.17122\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Fra\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7706,7 +7702,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.213\\RuntimeIdentifierGraph.json"
       }
     }
   }
