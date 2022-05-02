@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SharpPcap;
+using SharpPcap.LibPcap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,18 +30,15 @@ namespace WebSniffer.Pages
         public void OnGetInterfaces()
         {
             deviceList = new List<string[]>();
-            foreach (ICaptureDevice dev in CaptureDeviceList.Instance)
+            foreach (ICaptureDevice dev in LibPcapLiveDeviceList.Instance)
             {
                 deviceList.Add(parseDevice(dev));
             }
         }
 
-        //[TempData]
-        //public string deviceIp { get; set; }
 
         public ActionResult OnPostRedirect(string ipAdd)
-        {
-            //deviceIp = ipAdd;
+        {            
             return Redirect($"/InterfaceTraffic/{ipAdd}");
         }
 

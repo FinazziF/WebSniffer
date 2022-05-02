@@ -29,7 +29,7 @@ namespace WebSniffer.Pages
             devicePorp = parseDevice(device);
         }
 
-        private static void Device_OnPacketArrival(object s, PacketCapture e)
+        private void Device_OnPacketArrival(object s, PacketCapture e)
         {
             var packet = Packet.ParsePacket(e.Device.LinkType, e.Data.ToArray());
             string tablePacket = packet.ToString().Replace("][", "]\n\n[");
@@ -51,7 +51,7 @@ namespace WebSniffer.Pages
             //    tablePacket += $" :{tcp.DestinationPort}";
             //}
             System.Diagnostics.Debug.WriteLine(tablePacket);
-            //packets.Add(tablePacket);
+            packets.Add(tablePacket);
         }
 
         public void OnPostCaptureStop() 
