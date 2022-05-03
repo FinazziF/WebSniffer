@@ -11,6 +11,7 @@
 <form method="post" asp-page-handler="CaptureStart">
     <button class="btn btn-primary">Start Capture</button>
 </form>
+<br />
 <form method="post" asp-page-handler="CaptureStop">
     <button class="btn btn-primary">Stop Capture</button>
 </form>
@@ -20,13 +21,13 @@
 <table>
     <tr>
         <th>Packets</th>
-
     </tr>
-    @foreach (var packet in Model.packets)
-    {
-        <tr>
-            <td>@packet</td>            
-        </tr>
+    @if (Model.packets != null) {
+        foreach (var packet in Model.packets)
+        {
+            <tr>
+                <td>@packet</td>
+            </tr>
+        }
     }
 </table>
-

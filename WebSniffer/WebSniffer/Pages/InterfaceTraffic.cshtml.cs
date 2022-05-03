@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -16,8 +17,9 @@ namespace WebSniffer.Pages
     {        
         public static ICaptureDevice device { get; set; }
         public string[] devicePorp { get; set; }
-        public List<string> packets { get; set; }
-        
+
+        [BindProperty]
+        public List<string> packets { get; set; }        
         [BindProperty]
         private bool capture { get; set; }
         [Parameter, BindProperty]
@@ -52,29 +54,33 @@ namespace WebSniffer.Pages
             //}
             System.Diagnostics.Debug.WriteLine(tablePacket);
             packets.Add(tablePacket);
+            RefreshPage();
+        }
+        public ActionResult RefreshPage() 
+        {
+            return Page();
         }
 
         public void OnPostCaptureStop() 
         {
             var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
             devicePorp = parseDevice(device);
-            if (capture)
+            if (device.Started)
             {
-                capture = false;
-
                 device.StopCapture();
                 device.Close();
-            }
+            }   
         }
+        
         public void OnPostCaptureStart()
         {
+            packets = new List<string>();
+            
             var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
             devicePorp = parseDevice(device);
             
-            if (capture == false)
+            if (!device.Started)
             {
-                capture = true;
-
                 device.Open();
                 device.OnPacketArrival += Device_OnPacketArrival;
                 device.Filter = "ip and tcp";

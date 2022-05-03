@@ -7614,26 +7614,23 @@
   },
   "packageFolders": {
     "C:\\Users\\finazzi.17122\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
+      "projectUniqueName": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
       "projectName": "WebSniffer",
-      "projectPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
+      "projectPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
       "packagesPath": "C:\\Users\\finazzi.17122\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\obj\\",
+      "outputPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\finazzi.17122\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7709,7 +7706,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }
