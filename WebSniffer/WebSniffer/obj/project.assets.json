@@ -953,10 +953,10 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "PacketDotNet/1.2.0": {
+      "PacketDotNet/1.4.0": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.7.0"
+          "System.Runtime.CompilerServices.Unsafe": "5.0.0"
         },
         "compile": {
           "lib/netstandard2.0/PacketDotNet.dll": {}
@@ -978,11 +978,12 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "SharpPcap/6.0.0": {
+      "SharpPcap/6.2.0": {
         "type": "package",
         "dependencies": {
-          "PacketDotNet": "1.2.0",
-          "System.Memory": "4.5.4"
+          "PacketDotNet": "1.4.0",
+          "System.Memory": "4.5.4",
+          "System.Text.Encoding.CodePages": "6.0.0"
         },
         "compile": {
           "lib/netstandard2.0/SharpPcap.dll": {}
@@ -1955,19 +1956,22 @@
           "ref/netstandard1.3/System.Text.Encoding.dll": {}
         }
       },
-      "System.Text.Encoding.CodePages/4.7.0": {
+      "System.Text.Encoding.CodePages/6.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0"
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/netstandard2.0/_._": {}
+          "lib/netcoreapp3.1/System.Text.Encoding.CodePages.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
+          "lib/netcoreapp3.1/System.Text.Encoding.CodePages.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll": {
+          "runtimes/win/lib/netcoreapp3.1/System.Text.Encoding.CodePages.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -3649,16 +3653,16 @@
         "packageIcon.png"
       ]
     },
-    "PacketDotNet/1.2.0": {
-      "sha512": "lse8dxIjyZ7QzC7ua0YBfDZywDovkhr1BZ9J2erxUNdyrCoQsbI74JPnZfEiODIzoWmkRmkz76zZU4mguHc2zQ==",
+    "PacketDotNet/1.4.0": {
+      "sha512": "n9ZcE3Qz6+7EUcAD6WMT1TzZKNPJl4YEVqP/wm3soU8/uNfSskEQSmhCKVjLqjLnQX6Zsh7MtIiQ1S+qp/s+HA==",
       "type": "package",
-      "path": "packetdotnet/1.2.0",
+      "path": "packetdotnet/1.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net45/PacketDotNet.dll",
+        "lib/net47/PacketDotNet.dll",
         "lib/netstandard2.0/PacketDotNet.dll",
-        "packetdotnet.1.2.0.nupkg.sha512",
+        "packetdotnet.1.4.0.nupkg.sha512",
         "packetdotnet.nuspec"
       ]
     },
@@ -3676,15 +3680,15 @@
         "runtime.native.system.nuspec"
       ]
     },
-    "SharpPcap/6.0.0": {
-      "sha512": "KHbeSfVhnI3Eum35fhzWLB13IM9T6/Y2KPKwEum7UfX4yydTuXexcW+PDMjFfz6OPehVCDvQTi28EYcJDvORXg==",
+    "SharpPcap/6.2.0": {
+      "sha512": "60DgMzopC5EEg2vFL+liB9ebspS6s/TGIremE40paEKSUI5T+Igl5DhIBG3gQYNCEs2nRGxOkygTaD90e0sTBw==",
       "type": "package",
-      "path": "sharppcap/6.0.0",
+      "path": "sharppcap/6.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SharpPcap.dll",
-        "sharppcap.6.0.0.nupkg.sha512",
+        "sharppcap.6.2.0.nupkg.sha512",
         "sharppcap.nuspec"
       ]
     },
@@ -6880,44 +6884,43 @@
         "system.text.encoding.nuspec"
       ]
     },
-    "System.Text.Encoding.CodePages/4.7.0": {
-      "sha512": "aeu4FlaUTemuT1qOd1MyU4T516QR4Fy+9yDbwWMPHOHy7U8FD6SgTzdZFO7gHcfAPHtECqInbwklVvUK4RHcNg==",
+    "System.Text.Encoding.CodePages/6.0.0": {
+      "sha512": "ZFCILZuOvtKPauZ/j/swhvw68ZRi9ATCfvGbk1QfydmcXBkIWecWKn/250UH7rahZ5OoDBaiAudJtPvLwzw85A==",
       "type": "package",
-      "path": "system.text.encoding.codepages/4.7.0",
+      "path": "system.text.encoding.codepages/6.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets",
+        "buildTransitive/netcoreapp3.1/_._",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
-        "lib/net46/System.Text.Encoding.CodePages.dll",
         "lib/net461/System.Text.Encoding.CodePages.dll",
         "lib/net461/System.Text.Encoding.CodePages.xml",
-        "lib/netstandard1.3/System.Text.Encoding.CodePages.dll",
+        "lib/net6.0/System.Text.Encoding.CodePages.dll",
+        "lib/net6.0/System.Text.Encoding.CodePages.xml",
+        "lib/netcoreapp3.1/System.Text.Encoding.CodePages.dll",
+        "lib/netcoreapp3.1/System.Text.Encoding.CodePages.xml",
         "lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
         "lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
         "runtimes/win/lib/net461/System.Text.Encoding.CodePages.dll",
         "runtimes/win/lib/net461/System.Text.Encoding.CodePages.xml",
-        "runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll",
-        "runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.xml",
-        "runtimes/win/lib/netstandard1.3/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.xml",
+        "runtimes/win/lib/netcoreapp3.1/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/netcoreapp3.1/System.Text.Encoding.CodePages.xml",
         "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
         "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
-        "system.text.encoding.codepages.4.7.0.nupkg.sha512",
+        "system.text.encoding.codepages.6.0.0.nupkg.sha512",
         "system.text.encoding.codepages.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.Text.Encoding.Extensions/4.3.0": {
@@ -7608,26 +7611,22 @@
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.16",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.16",
-      "SharpPcap >= 6.0.0",
+      "SharpPcap >= 6.2.0",
       "Syncfusion.Blazor >= 20.1.0.51"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\finazzi.17122\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\finazzi.17122\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
+      "projectUniqueName": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
       "projectName": "WebSniffer",
-      "projectPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
+      "projectPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
       "packagesPath": "C:\\Users\\finazzi.17122\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\obj\\",
+      "outputPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\finazzi.17122\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -7681,7 +7680,7 @@
           },
           "SharpPcap": {
             "target": "Package",
-            "version": "[6.0.0, )"
+            "version": "[6.2.0, )"
           },
           "Syncfusion.Blazor": {
             "target": "Package",
@@ -7706,7 +7705,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

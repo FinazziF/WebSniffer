@@ -1,0 +1,7 @@
+﻿@page "/Interface/{ip}"
+@model WebSniffer.Pages.InterfaceModel
+@{
+}
+<component type="typeof(TrafficInterface)"
+           render-mode="Server"
+           param-ip="@Model.ip"/>

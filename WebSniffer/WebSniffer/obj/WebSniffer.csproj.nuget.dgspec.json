@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj": {}
+    "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj": {
+    "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
+        "projectUniqueName": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
         "projectName": "WebSniffer",
-        "projectPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
+        "projectPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer.csproj",
         "packagesPath": "C:\\Users\\finazzi.17122\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\WebSniffer\\obj\\",
+        "outputPath": "C:\\Users\\finazzi.17122\\Documents\\GitHub\\WebSniffer\\WebSniffer\\WebSniffer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\finazzi.17122\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -69,7 +66,7 @@
             },
             "SharpPcap": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.2.0, )"
             },
             "Syncfusion.Blazor": {
               "target": "Package",
@@ -94,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
