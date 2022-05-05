@@ -163,7 +163,6 @@ C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSnif
 C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
 C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\Index.cshtml.g.cs
-C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\InterfaceTraffic.cshtml.g.cs
 C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\Privacy.cshtml.g.cs
 C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\Shared\_Layout.cshtml.g.cs
 C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\Shared\_LoginPartial.cshtml.g.cs
@@ -386,3 +385,11 @@ C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\obj\Deb
 C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\RazorDeclaration\WebSniffer.dll
 C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\TrafficInterface.razor.g.cs
 C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\Interface.cshtml.g.cs
+C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\bin\Debug\net5.0\System.Text.Encoding.CodePages.dll
+C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\WebSniffer.RazorComponent.input.cache
+C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\RazorDeclaration\Pages\TrafficInterface.razor.g.cs
+C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\WebSniffer.RazorComponent.output.cache
+C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\RazorDeclaration\WebSniffer.dll
+C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\TrafficInterface.razor.g.cs
+C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\Interface.cshtml.g.cs

@@ -13,19 +13,20 @@ namespace WebSniffer.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 2 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using SharpPcap;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 3 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using PacketDotNet;
 
 #line default
 #line hidden
 #nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/TrafficInterface/{ip}")]
     public partial class TrafficInterface : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -34,7 +35,7 @@ using PacketDotNet;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 30 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 31 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
        
     [Parameter]
     public string ip { get; set; }

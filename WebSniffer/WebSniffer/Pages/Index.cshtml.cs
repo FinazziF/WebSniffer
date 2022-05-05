@@ -38,7 +38,7 @@ namespace WebSniffer.Pages
 
         public ActionResult OnPostRedirect(string ip)
         {            
-            return Redirect($"/Interface/{ip}");
+            return Redirect($"/TrafficInterface/{ip}");
         }
 
         private string[] parseDevice(ICaptureDevice dev)

@@ -2,6 +2,9 @@
 @model WebSniffer.Pages.InterfaceModel
 @{
 }
-<component type="typeof(TrafficInterface)"
-           render-mode="Server"
-           param-ip="@Model.ip"/>
+<component type="typeof(WebSniffer.Pages.TrafficInterface)" param-ip="Model.ip" render-mode="Server" />
+
+@section Scripts {
+    <script src="_framework/blazor.server.js"></script>
+}
+
