@@ -29,12 +29,14 @@
 
 
 @code {
+
     [Parameter]
     public string ip { get; set; }
+
     public static ICaptureDevice device { get; set; }
     public string[] devicePorp { get; set; }
     public static List<string> packets { get; set; }
-    
+
     protected void CaptureStop()
     {
         var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
@@ -89,9 +91,13 @@
 
     protected override void OnInitialized()
     {
-        var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
-        devicePorp = parseDevice(device);
+        if (ip != null)
+        {
+            var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
+            devicePorp = parseDevice(device);
+        }
     }
+
 
     protected string[] parseDevice(ICaptureDevice dev)
     {

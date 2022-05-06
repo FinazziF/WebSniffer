@@ -13,14 +13,84 @@ namespace WebSniffer.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 2 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 1 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
+using System.Net.Http;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
+using Microsoft.AspNetCore.Components.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
+using Microsoft.AspNetCore.Components.Forms;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
+using Microsoft.AspNetCore.Components.Routing;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
+using Microsoft.AspNetCore.Components.Web;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
+using Microsoft.AspNetCore.Components.Web.Virtualization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
+using Microsoft.JSInterop;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
+using WebSniffer;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
+using WebSniffer.Pages;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using SharpPcap;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 3 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using PacketDotNet;
 
 #line default
@@ -35,14 +105,16 @@ using PacketDotNet;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 31 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 31 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
        
+
     [Parameter]
     public string ip { get; set; }
+
     public static ICaptureDevice device { get; set; }
     public string[] devicePorp { get; set; }
     public static List<string> packets { get; set; }
-    
+
     protected void CaptureStop()
     {
         var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
@@ -97,9 +169,13 @@ using PacketDotNet;
 
     protected override void OnInitialized()
     {
-        var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
-        devicePorp = parseDevice(device);
+        if (ip != null)
+        {
+            var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
+            devicePorp = parseDevice(device);
+        }
     }
+
 
     protected string[] parseDevice(ICaptureDevice dev)
     {
