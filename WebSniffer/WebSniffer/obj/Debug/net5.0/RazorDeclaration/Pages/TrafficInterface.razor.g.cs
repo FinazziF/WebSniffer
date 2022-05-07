@@ -55,11 +55,11 @@ using Microsoft.AspNetCore.Components.Web;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 60 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 59 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
        
     public class TablePacket
     {
-
+        
         public bool Ipv4Tcp { get; set; }
         public string basePacket { get; set; }
         public TablePacket(string packet)

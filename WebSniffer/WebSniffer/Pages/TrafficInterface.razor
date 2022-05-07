@@ -18,49 +18,48 @@
 
 @if (packets != null)
 {
-    <table>
+<table class="table table-striped">
+    <thead>
         <tr>
+            <th>Time</th>
             <th>Packet</th>
             <th>Sender</th>
             <th>Receiver</th>
         </tr>
-        <tr>
-
-        @foreach (var packet in packets)
+    </thead>
+    <tbody>
+        @foreach (var packet in packets.ToList())
         {
-            if (packet.Ipv4Tcp)
-            {
-                <td>
-                    @packet.basePacket
-                </td>
-                <td>
-                    @packet.sender
-                </td>
-                <td>
-                    @packet.receiver
-                </td>
-            }
-            else
-            {
-                <td>
-                    @packet.basePacket
-                </td>
-                <td>
-                    not available
-                </td>
-                <td>
-                    not available
-                </td>
-            }
+            <tr>
+                @if (packet.Ipv4Tcp)
+                {
+                    <td>@DateTime.Now.TimeOfDay</td>
+                    <td>
+                        @packet.basePacket
+                    </td>
+                    <td>
+                        @packet.sender
+                    </td>
+                    <td>
+                        @packet.receiver
+                    </td>
+                }
+                else
+                {
+                    <td colspan="3">
+                        @packet.basePacket
+                    </td>                    
+                }
+            </tr>
         }
-        </tr>
+    </tbody>
     </table>
 }
 
 @code {
     public class TablePacket
     {
-
+        
         public bool Ipv4Tcp { get; set; }
         public string basePacket { get; set; }
         public TablePacket(string packet)
