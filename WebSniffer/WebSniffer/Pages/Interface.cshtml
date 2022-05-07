@@ -1,7 +1,18 @@
 ﻿@page "/Interface/{ip}"
 @model WebSniffer.Pages.InterfaceModel
+@using System.Net.Http
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.JSInterop
+@using WebSniffer
+@using WebSniffer.Pages
+
 @{
 }
 
 <component type="typeof(TrafficInterface)" param-ip="@Model.GetIp()" render-mode="ServerPrerendered" />
-@*@(await Html.RenderComponentAsync<WebSniffer.Pages.TrafficInterface>( RenderMode.ServerPrerendered , new { ip = Model.ip }))*@
+<script src="~/_framework/blazor.server.js"></script>

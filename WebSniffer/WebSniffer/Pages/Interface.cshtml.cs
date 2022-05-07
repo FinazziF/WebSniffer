@@ -19,8 +19,7 @@ namespace WebSniffer.Pages
             return Request.Path.ToString().Split('/')[2];
         }        
         public void OnGet(string ip)
-        {
-            string a = "asdfasdfasf";
+        {            
         }
     }
 }

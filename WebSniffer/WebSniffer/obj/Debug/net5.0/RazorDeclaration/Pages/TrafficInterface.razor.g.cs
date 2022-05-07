@@ -11,87 +11,37 @@ namespace WebSniffer.Pages
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
-using System.Net.Http;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
-using Microsoft.AspNetCore.Authorization;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
-using Microsoft.AspNetCore.Components.Authorization;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 4 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
-using Microsoft.AspNetCore.Components.Forms;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
-using Microsoft.AspNetCore.Components.Routing;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 6 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
-using Microsoft.AspNetCore.Components.Web;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 7 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
-using Microsoft.AspNetCore.Components.Web.Virtualization;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 8 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
-using Microsoft.JSInterop;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 9 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
-using WebSniffer;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 10 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\_imports.razor"
-using WebSniffer.Pages;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 2 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using SharpPcap;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 3 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using PacketDotNet;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+using System.Net;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+using Microsoft.AspNetCore.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
@@ -105,15 +55,35 @@ using PacketDotNet;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 31 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 60 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
        
+    public class TablePacket
+    {
+
+        public bool Ipv4Tcp { get; set; }
+        public string basePacket { get; set; }
+        public TablePacket(string packet)
+        {
+            Ipv4Tcp = false;
+            basePacket = packet;
+        }
+        public TablePacket(string packet, string sender, string receiver)
+        {
+            Ipv4Tcp = true;
+            basePacket = packet;
+            this.sender = sender;
+            this.receiver = receiver;
+        }
+        public string sender { get; set; }
+        public string receiver { get; set; }
+    }
 
     [Parameter]
     public string ip { get; set; }
 
     public static ICaptureDevice device { get; set; }
     public string[] devicePorp { get; set; }
-    public static List<string> packets { get; set; }
+    public static List<TablePacket> packets { get; set; }
 
     protected void CaptureStop()
     {
@@ -128,7 +98,7 @@ using PacketDotNet;
 
     protected void CaptureStart()
     {
-        packets = new List<string>();
+        packets = new List<TablePacket>();
 
         var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
         devicePorp = parseDevice(device);
@@ -146,25 +116,31 @@ using PacketDotNet;
     {
         var packet = Packet.ParsePacket(e.Device.LinkType, e.Data.ToArray());
         string tablePacket = packet.ToString().Replace("][", "]\n\n[");
-        //if (packet != null && packet.PayloadPacket != null && packet.PayloadPacket.PayloadPacket != null &&
-        //    packet.PayloadPacket.GetType() == typeof(IPv4Packet) &&
-        //    packet.PayloadPacket.PayloadPacket.GetType() == typeof(TcpPacket))
-        //{
-        //    var ipv4 = (IPv4Packet)packet.PayloadPacket;
-        //    var tcp = (TcpPacket)ipv4.PayloadPacket;
+        if (packet != null && packet.PayloadPacket != null && packet.PayloadPacket.PayloadPacket != null &&
+            packet.PayloadPacket.GetType() == typeof(IPv4Packet) &&
+            packet.PayloadPacket.PayloadPacket.GetType() == typeof(TcpPacket))
+        {
+            var ipv4 = (IPv4Packet)packet.PayloadPacket;
+            var tcp = (TcpPacket)ipv4.PayloadPacket;
 
-        //    tablePacket += ("\nFrom: ");
-        //    try { tablePacket += Dns.GetHostEntry(ipv4.SourceAddress).HostName; }
-        //    catch { tablePacket += ipv4.SourceAddress; }
-        //    tablePacket += $" :{tcp.SourcePort}";
+            string sender = "";
+            try { sender += Dns.GetHostEntry(ipv4.SourceAddress).HostName; }
+            catch { sender += ipv4.SourceAddress; }
+            sender += $" :{tcp.SourcePort}";
 
-        //    tablePacket += "To: ";
-        //    try { tablePacket += Dns.GetHostEntry(ipv4.DestinationAddress).HostName; }
-        //    catch { tablePacket += ipv4.DestinationAddress; }
-        //    tablePacket += $" :{tcp.DestinationPort}";
-        //}
-        System.Diagnostics.Debug.WriteLine(tablePacket);
-        packets.Add(tablePacket);
+            string receiver = "";
+            try { receiver += Dns.GetHostEntry(ipv4.DestinationAddress).HostName; }
+            catch { receiver += ipv4.DestinationAddress; }
+            receiver += $" :{tcp.DestinationPort}";
+
+            packets.Add(new TablePacket(tablePacket, sender, receiver));
+        }
+        else
+        {
+            packets.Add(new TablePacket(tablePacket));
+        }
+
+        InvokeAsync(StateHasChanged);
     }
 
     protected override void OnInitialized()
