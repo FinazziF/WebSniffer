@@ -12,36 +12,64 @@ namespace WebSniffer.Pages
     using System.Linq;
     using System.Threading.Tasks;
 #nullable restore
-#line 2 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 3 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using SharpPcap;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 4 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using PacketDotNet;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 5 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using System.Net;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 6 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using Microsoft.AspNetCore.Components;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 7 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
 using Microsoft.AspNetCore.Components.Web;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+using System.IO;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+using Newtonsoft.Json;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+using System.Text;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+using Microsoft.JSInterop;
 
 #line default
 #line hidden
@@ -55,35 +83,60 @@ using Microsoft.AspNetCore.Components.Web;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 59 "C:\Users\finazzi.17122\Documents\GitHub\WebSniffer\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
+#line 110 "D:\Progetti\WebSniffer\WebSniffer\WebSniffer\Pages\TrafficInterface.razor"
        
+    
     public class TablePacket
     {
-        
+        public int id { get; set; }
         public bool Ipv4Tcp { get; set; }
         public string basePacket { get; set; }
-        public TablePacket(string packet)
+        public TablePacket(string packet, int id)
         {
             Ipv4Tcp = false;
             basePacket = packet;
+            this.id = id;
         }
-        public TablePacket(string packet, string sender, string receiver)
+        public TablePacket(string packet, string sender, string receiver, int id)
         {
             Ipv4Tcp = true;
             basePacket = packet;
             this.sender = sender;
             this.receiver = receiver;
+            this.id = id;
         }
         public string sender { get; set; }
         public string receiver { get; set; }
     }
 
+    public List<TablePacket> ReverseQueue()
+    {
+        return packetQueue.Reverse<TablePacket>().ToList();
+    }
+
+    protected bool onlyTcpIp { get; set; }
     [Parameter]
     public string ip { get; set; }
 
+    public int packetCount { get; set; }
+    public int maxNumPackets { get; set; }
     public static ICaptureDevice device { get; set; }
     public string[] devicePorp { get; set; }
     public static List<TablePacket> packets { get; set; }
+    public static Queue<TablePacket> packetQueue { get; set; }
+
+    protected async Task JsonList()
+    {
+        var list = ReverseQueue();
+        if (list.Any())
+        {
+            Encoding u8 = Encoding.UTF8;
+            var a = JsonConvert.SerializeObject(list, Formatting.Indented).ToString();
+            var byteArr = JsonConvert.SerializeObject(list, Formatting.Indented).ToString().ToList().Select(c => (byte)c).ToArray();
+
+            await JS.InvokeVoidAsync("downloadFile", "text/plain", Convert.ToBase64String(byteArr), "packetCapture.json");
+        }
+    }
 
     protected void CaptureStop()
     {
@@ -99,21 +152,28 @@ using Microsoft.AspNetCore.Components.Web;
     protected void CaptureStart()
     {
         packets = new List<TablePacket>();
-
-        var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
-        devicePorp = parseDevice(device);
-
-        if (!device.Started)
+        packetQueue = new Queue<TablePacket>();
+        packetCount = 0;
+        if (maxNumPackets != 0)
         {
-            device.Open();
-            device.OnPacketArrival += Device_OnPacketArrival;
-            device.Filter = "ip and tcp";
-            device.StartCapture();
+
+            var device = CaptureDeviceList.Instance.First(x => parseDevice(x)[1] == ip);
+            devicePorp = parseDevice(device);
+
+            if (!device.Started)
+            {
+                device.Open();
+                device.OnPacketArrival += Device_OnPacketArrival;
+                if (onlyTcpIp)
+                    device.Filter = "ip and tcp";
+                device.StartCapture();
+            }
         }
     }
 
     private void Device_OnPacketArrival(object s, PacketCapture e)
     {
+        packetCount++;
         var packet = Packet.ParsePacket(e.Device.LinkType, e.Data.ToArray());
         string tablePacket = packet.ToString().Replace("][", "]\n\n[");
         if (packet != null && packet.PayloadPacket != null && packet.PayloadPacket.PayloadPacket != null &&
@@ -133,14 +193,23 @@ using Microsoft.AspNetCore.Components.Web;
             catch { receiver += ipv4.DestinationAddress; }
             receiver += $" :{tcp.DestinationPort}";
 
-            packets.Add(new TablePacket(tablePacket, sender, receiver));
+            PushPopPackets(new TablePacket(tablePacket, sender, receiver, packetCount));
         }
         else
         {
-            packets.Add(new TablePacket(tablePacket));
+            PushPopPackets(new TablePacket(tablePacket, packetCount));
         }
 
         InvokeAsync(StateHasChanged);
+    }
+
+    protected void PushPopPackets(TablePacket tPacket)
+    {
+        if (packetQueue.Count() > maxNumPackets - 1)
+        {
+            packetQueue.Dequeue();
+        }
+        packetQueue.Enqueue(tPacket);
     }
 
     protected override void OnInitialized()
@@ -151,7 +220,6 @@ using Microsoft.AspNetCore.Components.Web;
             devicePorp = parseDevice(device);
         }
     }
-
 
     protected string[] parseDevice(ICaptureDevice dev)
     {
@@ -191,6 +259,7 @@ using Microsoft.AspNetCore.Components.Web;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JS { get; set; }
     }
 }
 #pragma warning restore 1591

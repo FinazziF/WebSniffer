@@ -399,6 +399,4 @@ D:\Progetti\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\Interf
 D:\Progetti\WebSniffer\WebSniffer\WebSniffer\bin\Debug\net5.0\System.Text.Encoding.CodePages.dll
 D:\Progetti\WebSniffer\WebSniffer\WebSniffer\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\System.Text.Encoding.CodePages.dll
 D:\Progetti\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\RazorDeclaration\Pages\TrafficInterface.razor.g.cs
-D:\Progetti\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\RazorDeclaration\Pages\_imports.razor.g.cs
 D:\Progetti\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\TrafficInterface.razor.g.cs
-D:\Progetti\WebSniffer\WebSniffer\WebSniffer\obj\Debug\net5.0\Razor\Pages\_imports.razor.g.cs

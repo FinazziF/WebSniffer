@@ -29,16 +29,25 @@ namespace WebSniffer.Pages
 
         public void OnGetInterfaces()
         {
-            deviceList = new List<string[]>();
-            foreach (ICaptureDevice dev in LibPcapLiveDeviceList.Instance)
+            try
             {
-                deviceList.Add(parseDevice(dev));
+                deviceList = new List<string[]>();
+                foreach (ICaptureDevice dev in LibPcapLiveDeviceList.Instance)
+                {
+                    deviceList.Add(parseDevice(dev));
+                }
+            }
+            catch {
+                Redirect("/Error");
             }
         }
 
         public ActionResult OnPostRedirect(string ip)
-        {            
-            return Redirect($"/Interface/{ip}");
+        {
+            if (HttpContext.User.Identity.IsAuthenticated)
+                return Redirect($"/Interface/{ip}");
+            else
+                return Redirect("/Identity/Account/Login");
         }
 
         private string[] parseDevice(ICaptureDevice dev)

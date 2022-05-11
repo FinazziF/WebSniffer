@@ -1,4 +1,7 @@
 ﻿@page "/Interface/{ip}"
+@{
+    ViewData["Title"] = "Interface Traffic";
+}
 @model WebSniffer.Pages.InterfaceModel
 @using System.Net.Http
 @using Microsoft.AspNetCore.Authorization
@@ -11,8 +14,5 @@
 @using WebSniffer
 @using WebSniffer.Pages
 
-@{
-}
 
 <component type="typeof(TrafficInterface)" param-ip="@Model.GetIp()" render-mode="ServerPrerendered" />
-<script src="~/_framework/blazor.server.js"></script>
